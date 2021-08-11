@@ -1,8 +1,8 @@
 <%@page import="java.sql.Timestamp" %>
 <%@page import="board.member.db.*" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("EUC-KR"); %>
+<% request.setCharacterEncoding("UTF-8"); %>
 
 <jsp:useBean id="dto" class="board.member.db.MemberDto"/>
 <jsp:setProperty name="dto" property="*"/>

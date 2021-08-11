@@ -17,9 +17,9 @@ public class MemberDao {
  
 	private static MemberDao instance = new MemberDao();
 	
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-    String id = "scott";
-    String pw = "tiger";
+	String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
+    String db_id = "scott";
+    String db_pw = "tiger";
 	
 	private MemberDao() {
 	}
@@ -37,7 +37,7 @@ public class MemberDao {
 		String query = "insert into member values (?,?,?,?,?,?,?,?,?)";
 		
 		try {
-			connection = DriverManager.getConnection(url, id, pw);
+			connection = DriverManager.getConnection(db_url, db_id, db_pw);
 			pstmt = connection.prepareStatement(query);
 			
 			pstmt.setString(1, dto.getId());
@@ -76,7 +76,7 @@ public class MemberDao {
 		String query = "select id from member where id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, id, pw);
+			connection = DriverManager.getConnection(db_url, db_id, db_pw);
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, id);
 			set = pstmt.executeQuery();
@@ -109,7 +109,7 @@ public class MemberDao {
 		String query = "select pw from member where id = ?";
 		
 		try {
-			connection = DriverManager.getConnection(url, id, pw);
+			connection = DriverManager.getConnection(db_url, db_id, db_pw);
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, id);
 			set = pstmt.executeQuery();
@@ -146,7 +146,7 @@ public class MemberDao {
 		MemberDto dto = null;
 		
 		try {
-			connection = DriverManager.getConnection(url, id, pw);
+			connection = DriverManager.getConnection(db_url, db_id, db_pw);
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, id);
 			set = pstmt.executeQuery();
@@ -186,7 +186,7 @@ public class MemberDao {
 		String query = "update member set pw=?, nickname=?, phone=?, eMail=? where id=?";
 		
 		try {
-			connection = DriverManager.getConnection(url, id, pw);
+			connection = DriverManager.getConnection(db_url, db_id, db_pw);
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, dto.getPw());
 			pstmt.setString(2, dto.getNickname());
