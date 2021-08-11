@@ -34,7 +34,7 @@ public class MemberDao {
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
-		String query = "insert into member values (?,?,?,?,?,?,?,?,?)";
+		String query = "insert into member values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			connection = DriverManager.getConnection(db_url, db_id, db_pw);
@@ -44,11 +44,15 @@ public class MemberDao {
 			pstmt.setString(2, dto.getPw());
 			pstmt.setString(3, dto.getName());
 			pstmt.setString(4, dto.getNickname());
-			pstmt.setString(5, dto.getPhone());
-			pstmt.setString(6, dto.geteMail());
-			pstmt.setString(7, dto.getGender());
-			pstmt.setString(8, dto.getBirth());
-			pstmt.setTimestamp(9, dto.getrDate());
+			pstmt.setString(5, dto.getPhone1());
+			pstmt.setString(6, dto.getPhone2());
+			pstmt.setString(7, dto.getPhone3());
+			pstmt.setString(8, dto.getEmail());
+			pstmt.setString(9, dto.getGender());
+			pstmt.setString(10, dto.getBirthY());
+			pstmt.setString(11, dto.getBirthM());
+			pstmt.setString(12, dto.getBirthD());
+			pstmt.setTimestamp(13, dto.getrDate());
 			
 			pstmt.executeUpdate();
 			ri = MemberDao.MEMBER_JOIN_SUCCESS;
@@ -157,10 +161,14 @@ public class MemberDao {
 				dto.setPw(set.getString("pw"));
 				dto.setName(set.getString("name"));
 				dto.setNickname(set.getString("nickname"));
-				dto.setPhone(set.getString("phone1")+"-"+set.getString("phone2")+"-"+set.getString("phone3"));
-				dto.seteMail(set.getString("eMail"));
+				dto.setPhone1(set.getString("phone1"));
+				dto.setPhone2(set.getString("phone2"));
+				dto.setPhone3(set.getString("phone3"));
+				dto.setEmail(set.getString("email"));
 				dto.setGender(set.getString("gender"));
-				dto.setBirth(set.getString("birthY")+set.getString("birthM")+set.getString("birthD"));
+				dto.setBirthY(set.getString("birthY"));
+				dto.setBirthM(set.getString("birthM"));
+				dto.setBirthD(set.getString("birthD"));
 				dto.setrDate(set.getTimestamp("rDate"));
 			}
 		}catch(Exception e) {
@@ -183,16 +191,20 @@ public class MemberDao {
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
-		String query = "update member set pw=?, nickname=?, phone=?, eMail=? where id=?";
+		String query = "update member set nickname=?, phone1=?, phone2=?, phone3=?, email=?, birthY=?, birthM=?, birthD=? where id=?";
 		
 		try {
 			connection = DriverManager.getConnection(db_url, db_id, db_pw);
 			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, dto.getPw());
-			pstmt.setString(2, dto.getNickname());
-			pstmt.setString(3, dto.getPhone());
-			pstmt.setString(4, dto.geteMail());
-			pstmt.setString(5, dto.getId());
+			pstmt.setString(1, dto.getNickname());
+			pstmt.setString(2, dto.getPhone1());
+			pstmt.setString(3, dto.getPhone2());
+			pstmt.setString(4, dto.getPhone3());
+			pstmt.setString(5, dto.getEmail());
+			pstmt.setString(6, dto.getBirthY());
+			pstmt.setString(7, dto.getBirthM());
+			pstmt.setString(8, dto.getBirthD());
+			pstmt.setString(9, dto.getId());
 			ri = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();

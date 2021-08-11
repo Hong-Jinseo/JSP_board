@@ -1,5 +1,8 @@
+<%@ page import="board.member.db.MemberDto"%>
+<%@ page import="board.member.db.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <%
 	if(session.getAttribute("ValidMem") == null){
 %>
@@ -7,7 +10,6 @@
 <%
 	}
 
-	String nickname = (String)session.getAttribute("nickname");
 	String id = (String)session.getAttribute("id");
 %>
 
@@ -18,7 +20,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h1><%= nickname %>님 안녕하세요!</h1><br/>
+		<h1><%= session.getAttribute("nickname") %>님 안녕하세요!</h1><br/>
 		<form action="logout.jsp" method="post">
 			<input type="button" value="게시판" onclick="javascript:window.location=''"><br/><br/>
 			<input type="submit" value="로그아웃"> &nbsp;&nbsp;&nbsp;

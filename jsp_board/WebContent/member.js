@@ -38,11 +38,48 @@ function infoConfirm() {
 		alert("Please enter your phone number.");
 		return;
 	}
-	if(document.reg_frm.eMail.value.length == 0){
+	if(document.reg_frm.email.value.length == 0){
 		alert("Please enter your e-mail address.");
-		reg_frm.eMail.focus();
+		reg_frm.email.focus();
 		return;
 	}
 	
 	document.reg_frm.submit();
+}
+
+
+function updateInfoConfirm(){
+	
+	if(document.reg_frm.nickname.value.length == 0) {
+		alert("닉네임을 입력해주세요.");
+		reg_frm.nickname.focus();
+		return;
+	}
+	if(document.reg_frm.phone1.value.length==0 || document.reg_frm.phone2.value.length==0 || document.reg_frm.phone3.value.length==0) {
+		alert("전화번호를 입력해주세요.");
+		reg_frm.phone1.focus();
+		return;
+	}
+	if(document.reg_frm.birthY.value.length==0 || document.reg_frm.birthM.value.length==0 || document.reg_frm.birthD.value.length==0) {
+		alert("생일을 입력해주세요.");
+		reg_frm.birthY.focus();
+		return;
+	}
+	
+	document.reg_frm.submit();
+}
+
+
+function updatePw(){
+	if(document.reg_frm.pw.value == "") {
+		alert("비밀번호를 입력해주세요.");
+		document.reg_frm.pw.focus();
+		return;
+	}
+	
+	if(document.reg_frm.pw.value != document.reg_frm.pw_chk.value) {
+		alert("비밀 번호가 일치하지 않습니다.");
+		reg_frm.pw.focus();
+		return;
+	}
 }

@@ -33,7 +33,7 @@
 			- <input type="text" name="phone2" size="5"> - <input type="text" name="phone3" size="5"><br/><br/>
 			
 			이메일<br/>
-			<input type="text" name="eMail" size="20"><br/><br/>
+			<input type="text" name="email" size="20"><br/><br/>
 			
 			성별<br/>
 			<input type="radio" name="gender" value="woman">여자

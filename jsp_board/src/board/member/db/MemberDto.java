@@ -4,18 +4,8 @@ import java.sql.Timestamp;
 
 public class MemberDto {
 	
-	private String id, pw, name, nickname, phone, eMail, gender, birth;
+	private String id, pw, name, nickname, phone1, phone2, phone3, email, gender, birthY, birthM, birthD;
 	private Timestamp rDate;
-	
-//	public MemberDto(String id, String pw, String name, String eMail, String address, Timestamp rDate) {
-//	this.id = id;
-//	this.pw = pw;
-//	this.name = name;
-//	this.eMail = eMail;
-//	this.address = address;
-//	this.rDate = rDate;
-//}
-
 	
 	public String getId() {
 		return id;
@@ -41,17 +31,29 @@ public class MemberDto {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getPhone() {
-		return phone;
+	public String getPhone1() {
+		return phone1;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
 	}
-	public String geteMail() {
-		return eMail;
+	public String getPhone2() {
+		return phone2;
 	}
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+	public String getPhone3() {
+		return phone3;
+	}
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getGender() {
 		return gender;
@@ -59,16 +61,30 @@ public class MemberDto {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getBirth() {
-		return birth;
+	public String getBirthY() {
+		return birthY;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setBirthY(String birthY) {
+		this.birthY = birthY;
+	}
+	public String getBirthM() {
+		return birthM;
+	}
+	public void setBirthM(String birthM) {
+		this.birthM = birthM;
+	}
+	public String getBirthD() {
+		return birthD;
+	}
+	public void setBirthD(String birthD) {
+		this.birthD = birthD;
 	}
 	public Timestamp getrDate() {
 		return rDate;
 	}
 	public void setrDate(Timestamp rDate) {
 		this.rDate = rDate;
-	}	
+	}
+	
+	
 }

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	session.invalidate();
+	response.sendRedirect("login.jsp");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +13,5 @@
 </head>
 <body>
 
-회원가입이 정상 처리 되었습니다.<br/>
-<a href="login.html">로그인</a>
 </body>
 </html>
