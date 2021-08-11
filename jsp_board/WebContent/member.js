@@ -2,39 +2,45 @@
  * 
  */
 
-function infoConfirm(){
+function infoConfirm() {
+	
 	if(document.reg_frm.id.value.length == 0){
-		alert("아이디를 입력하세요.");
-		reg_frm.id.focus();
+		alert("Please enter your ID.");
+		reg_frm.getElementById('id').focus();
 		return;
 	}
-	else if(document.reg_frm.id.value.length < 4){
-		alert("아이디는 4글자 이상 이어야 합니다.");
-		reg_frm.id.focus();
+	if(document.reg_frm.id.value.length < 4){
+		alert("ID must be at least 4 characters long.");
+		reg_frm.getElementById('id').focus();
 		return;
 	}
-	else if(document.reg_frm.pw.value.length == 0){
-		alert("비밀번호를 입력하세요.");
+	if(document.reg_frm.pw.value.length == 0){
+		alert("Please enter your password.");
 		reg_frm.pw.focus();
 		return;
 	}
-	else if(document.reg_frm.pw.value != document.reg_frm.pw_chk.value){
-		alert("비밀번호가 일치하지 않습니다.");
+	if(document.reg_frm.pw.value != document.reg_frm.pw_chk.value){
+		alert("Passwords do not match.");
 		reg_frm.pw_chk.focus();
 		return;
 	}
-	else if(document.reg_frm.name.value.length == 0){
-		alert("이름을 입력하세요.");
+	if(document.reg_frm.name.value.length == 0){
+		alert("Please enter your name.");
 		reg_frm.name.focus();
 		return;
 	}
-	else if(document.reg_frm.phone2.value.length == 0 || document.reg_frm.phone3.value.length == 0){
-		alert("전화번호를 입력하세요.");
+	if(document.reg_frm.nickname.value.length == 0){
+		alert("Please enter your nickname.");
+		reg_frm.nickname.focus();
 		return;
 	}
-	else if(document.reg_frm.email.value.length == 0){
-		alert("이메일을 입력하세요.");
-		reg_frm.email.focus();
+	if(document.reg_frm.phone2.value.length == 0 || document.reg_frm.phone3.value.length == 0){
+		alert("Please enter your phone number.");
+		return;
+	}
+	if(document.reg_frm.eMail.value.length == 0){
+		alert("Please enter your e-mail address.");
+		reg_frm.eMail.focus();
 		return;
 	}
 	

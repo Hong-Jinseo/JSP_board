@@ -1,45 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 		<title>Insert title here</title>
+		<script language="JavaScript" src="member.js" ></script>
 	</head>
 	<body>
-		<form action="joinOk.jsp" method="post" name="reg_frm">
+		<form name="reg_frm" action="joinOk.jsp" method="post">
 		
 			ID<br/>
 			<input type="text" name="id" size="20"><br/><br/>
 			
-			ºñ¹Ð¹øÈ£<br/>
+			ë¹„ë°€ë²ˆí˜¸<br/>
 			<input type="password" name="pw" size="20"><br/><br/>
 			
-			ºñ¹Ð¹øÈ£ È®ÀÎ<br/>
+			ë¹„ë°€ë²ˆí˜¸ í™•ì¸<br/>
 			<input type="password" name="pw_chk" size="20"><br/><br/>
 			
-			ÀÌ¸§<br/>
+			ì´ë¦„<br/>
 			<input type="text" name="name" size="20"><br/><br/>
 			
-			ÀüÈ­¹øÈ£<br/>
+			ë‹‰ë„¤ìž„<br/>
+			<input type="text" name="nickname" size="20"><br/><br/>
+			
+			ì „í™”ë²ˆí˜¸<br/>
 			<select name="phone1">
 				<option value="010">010</option>
 				<option value="02">016</option>
 			</select>
 			- <input type="text" name="phone2" size="5"> - <input type="text" name="phone3" size="5"><br/><br/>
 			
-			ÀÌ¸ÞÀÏ<br/>
-			<input type="text" name="email" size="20"><br/><br/>
+			ì´ë©”ì¼<br/>
+			<input type="text" name="eMail" size="20"><br/><br/>
 			
-			¼ºº°<br/>
-			<input type="radio" name="gender" value="woman">¿©ÀÚ
-			<input type="radio" name="gender" value="man">³²ÀÚ <br><br/>
+			ì„±ë³„<br/>
+			<input type="radio" name="gender" value="woman">ì—¬ìž
+			<input type="radio" name="gender" value="man">ë‚¨ìž <br><br/>
 			
-			»ý³â¿ùÀÏ <br/>
+			ìƒë…„ì›”ì¼ <br/>
 			<select name="birthY">
 				<option value="2000" selected>2000</option>
 				<option value="2001">2001</option>
-			</select>³â 
+			</select>ë…„ 
 			<select name="birthM">
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -53,20 +57,17 @@
 				<option value="10">10</option>
 				<option value="11">11</option>
 				<option value="12">12</option>
-			</select>¿ù 
+			</select>ì›” 
 			<select name="birthD">
 				<option value="25">25</option>
 				<option value="26" selected>26</option>
 				<option value="27">27</option>
-			</select>ÀÏ
+			</select>ì¼
 			
 			<br/><br/>
 			
-			<input type="submit" value="È¸¿ø°¡ÀÔ" onclick="infoConfirm()">&nbsp;&nbsp;&nbsp; 
-			<input type="reset" value="Ãë¼Ò" onclick="javascript:window.location='login.jsp'">
-			
-			<!-- input type="button" onclick="infoConfirm()" value="È¸¿ø°¡ÀÔÇÏ±â"/>
-			<input type="button" onClick="location.href='login.jsp'" value="Ã¹ È­¸éÀ¸·Î"/-->
+			<input type="button" value="íšŒì›ê°€ìž…" onclick="infoConfirm()"/> &nbsp;&nbsp;&nbsp; 
+			<input type="button" value="ì·¨ì†Œ" onclick="javascript:window.location='login.jsp'"/>
 		</form>
 	</body>
 </html>

@@ -157,10 +157,10 @@ public class MemberDao {
 				dto.setPw(set.getString("pw"));
 				dto.setName(set.getString("name"));
 				dto.setNickname(set.getString("nickname"));
-				dto.setPhone(set.getString("phone"));
+				dto.setPhone(set.getString("phone1")+"-"+set.getString("phone2")+"-"+set.getString("phone3"));
 				dto.seteMail(set.getString("eMail"));
 				dto.setGender(set.getString("gender"));
-				dto.setBirth(set.getString("birth"));
+				dto.setBirth(set.getString("birthY")+set.getString("birthM")+set.getString("birthD"));
 				dto.setrDate(set.getTimestamp("rDate"));
 			}
 		}catch(Exception e) {

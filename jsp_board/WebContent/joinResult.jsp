@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +8,7 @@
 </head>
 <body>
 
-È¸¿ø°¡ÀÔÀÌ Á¤»ó Ã³¸® µÇ¾ú½À´Ï´Ù.<br/>
-<a href="login.html">·Î±×ÀÎ</a>
+íšŒì›ê°€ìž…ì´ ì •ìƒ ì²˜ë¦¬ ë˜ì—ˆìŠµë‹ˆë‹¤.<br/>
+<a href="login.html">ë¡œê·¸ì¸</a>
 </body>
 </html>

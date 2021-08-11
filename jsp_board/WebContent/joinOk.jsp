@@ -1,7 +1,7 @@
 <%@page import="java.sql.Timestamp" %>
 <%@page import="board.member.db.*" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("EUC-KR"); %>
 
 <jsp:useBean id="dto" class="board.member.db.MemberDto"/>
@@ -13,7 +13,7 @@
 	if(dao.confirmId(dto.getId()) == MemberDao.MEMBER_EXISTENT){
 %>
 	<script language="javascript">
-		alert("�̹� �����ϴ� ���̵��Դϴ�.");
+		alert("이미 존재하는 아이디입니다.");
 		history.back();
 	</script>
 <%
@@ -23,14 +23,14 @@
 			session.setAttribute("id", dto.getId());
 %>
 	<script language="javascript">
-		alert("ȸ�� ������ �����մϴ�.");
+		alert("회원 가입을 축하합니다.");
 		document.location.href="login.jsp";
 	</script>
 <%
 		}else{
 %>
 		<script language="javascript">
-			alert("ȸ�� ���Կ� �����߽��ϴ�.");
+			alert("회원 가입에 실패했습니다.");
 			history.back();
 		</script>
 <%

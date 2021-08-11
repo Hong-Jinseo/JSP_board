@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
     
-<!-- �̹� �α��� �� ���¶�� �ٷ� main���� -->
+<!-- 이미 로그인 한 상태라면 바로 main으로 -->
 <% if(session.getAttribute("ValidMem") != null) { %>
 	<jsp:forward page="main.jsp"></jsp:forward>
 <% } %>
@@ -14,15 +14,15 @@
 	</head>
 	<body>
 		<form action="LoginOk" method="post">
-			���̵�<br/>
+			아이디<br/>
 			<input type="text" name="id" value="<% if(session.getAttribute("id")!=null) out.println(session.getAttribute("id")); %>" size="30"> <br/><br/>
-			<!-- id���� �ԷµǾ��ٸ� value�� ���� -->
+			<!-- id값이 입력되었다면 value에 저장 -->
 			
-			��й�ȣ<br/>
+			비밀번호<br/>
 			<input type="password" name="pw" size="30"> <br/><br/>
 			
-			<button type="submit">�α���</button>
-			<button type="button" onclick="location.href='join.jsp'">ȸ������</button>
+			<button type="submit">로그인</button>
+			<button type="button" onclick="location.href='join.jsp'">회원가입</button>
 		</form>
 	</body>
 </html>
