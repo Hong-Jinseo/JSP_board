@@ -3,13 +3,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
+
 <%
 	if(session.getAttribute("ValidMem") == null){
 %>
 	<jsp:forward page="login.jsp"/>
 <%
 	}
-
 	String id = (String)session.getAttribute("id");
 %>
 
@@ -22,9 +22,9 @@
 	<body>
 		<h1><%= session.getAttribute("nickname") %>님 안녕하세요!</h1><br/>
 		<form action="logout.jsp" method="post">
-			<input type="button" value="게시판" onclick="javascript:window.location=''"><br/><br/>
+			<input type="button" value="게시판" onclick="javascript:window.location='list.do'"><br/><br/>
 			<input type="submit" value="로그아웃"> &nbsp;&nbsp;&nbsp;
-			<input type="button" value="정보 수정" onclick="javascript:window.location='modify.jsp'">
+			<input type="button" value="정보 수정" onclick="javascript:window.location='modifyMember.jsp'">
 		</form>
 	</body>
 </html>

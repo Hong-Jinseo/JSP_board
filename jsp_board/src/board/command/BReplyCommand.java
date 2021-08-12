@@ -16,7 +16,7 @@ public class BReplyCommand implements BCommand {
 		String bContent = request.getParameter("bContent");
 		
 		BDao dao = new BDao();
-		dao.reply(bId, bName, bTitle, bContent);
+		//dao.reply(bId, bName, bTitle, bContent);
 		
 		//28강 14분
 	}

@@ -9,18 +9,20 @@ public class BDto {
 	String bContent;
 	int bHit;
 	Timestamp bDate;
+	String bUserId;
 	
 	public BDto() {
 		
 	}
 	
-	public BDto(int bId, String bName, String bTitle, String bContent, int bHit, Timestamp bDate) {
+	public BDto(int bId, String bName, String bTitle, String bContent, int bHit, Timestamp bDate, String bUserId) {
 		this.bId = bId;
 		this.bName = bName;
 		this.bTitle = bTitle;
 		this.bContent = bContent;
 		this.bHit = bHit;
 		this.bDate = bDate;
+		this.bUserId = bUserId;
 	}
 
 	public int getbId() {
@@ -71,5 +73,11 @@ public class BDto {
 		this.bDate = bDate;
 	}
 	
-	
+	public String getbUserId() {
+		return bName;
+	}
+
+	public void setbUserId(String bUserId) {
+		this.bUserId = bUserId;
+	}
 }

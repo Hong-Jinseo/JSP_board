@@ -16,7 +16,7 @@
 		<script language="JavaScript" src="member.js"></script>
 	</head>
 	<body>
-		<form action="modifyOk.jsp" method="post" name="reg_frm">
+		<form action="modifyMemberOk.jsp" method="post" name="reg_frm">
 		
 			ID<br/>
 			&nbsp;&nbsp;&nbsp; <%= dto.getId() %> <br/><br/>

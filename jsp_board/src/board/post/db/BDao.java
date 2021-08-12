@@ -17,28 +17,27 @@ public class BDao {
 	public BDao() {
 		try {
 			Context context = new InitialContext();
-			//dataSource = (DataSource) context.lookup("java:comp/env/jdbc/Oracle11g");
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/orcl");
-			//dataSource = (DataSource) context.lookup("jdbc/orcl");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	
 	
-	public void write(String bName, String bTitle, String bContent) {
+	public void write(String bName, String bTitle, String bContent, String bUserId) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into mvc_board (bId, bName, bTitle, bContent, bHit) values (mvc_board_seq.nextval,?,?,?,0)";
+			String query = "insert into mvc_board (bId, bName, bTitle, bContent, bUserId, bHit) values (mvc_board_seq.nextval,?,?,?,?,0)";
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1,  bName);
 			preparedStatement.setString(2,  bTitle);
 			preparedStatement.setString(3,  bContent);
+			preparedStatement.setString(4,  bUserId);
 			
 			preparedStatement.executeUpdate();
 		}catch(Exception e){
@@ -65,7 +64,7 @@ public class BDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select bId, bName, bTitle, bContent, bHit, bDate from mvc_board order by bId desc";
+			String query = "select bId, bName, bTitle, bContent, bHit, bDate, bUserId from mvc_board order by bId desc";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -76,8 +75,9 @@ public class BDao {
 				String bContent = resultSet.getString("bContent");
 				int bHit = resultSet.getInt("bHit");
 				Timestamp bDate = resultSet.getTimestamp("bDate");
+				String bUserId = resultSet.getString("bUserId");
 				
-				BDto dto = new BDto(bId, bName, bTitle, bContent, bHit, bDate);
+				BDto dto = new BDto(bId, bName, bTitle, bContent, bHit, bDate, bUserId);
 				dtos.add(dto);
 			}
 		}catch(Exception e){
@@ -120,8 +120,9 @@ public class BDao {
 				String bContent = resultSet.getString("bContent");
 				int bHit = resultSet.getInt("bHit");
 				Timestamp bDate = resultSet.getTimestamp("bDate");
+				String bUserId = resultSet.getString("bUserId");
 				
-				dto = new BDto(bId, bName, bTitle, bContent, bHit, bDate);
+				dto = new BDto(bId, bName, bTitle, bContent, bHit, bDate, bUserId);
 			}
 			
 		} catch (Exception e) {
@@ -139,7 +140,7 @@ public class BDao {
 	}
 	
 	
-	public void modify(String bId, String bName, String bTitle, String bContent) {
+	public void modify(String bId, String bTitle, String bContent) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -147,12 +148,11 @@ public class BDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "update mvc_board set bName = ?, bTitle = ?, bContent = ? where bId = ?";
+			String query = "update mvc_board set bTitle = ?, bContent = ? where bId = ?";
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, bName);
-			preparedStatement.setString(2, bTitle);
-			preparedStatement.setString(3, bContent);
-			preparedStatement.setInt(4, Integer.parseInt(bId));
+			preparedStatement.setString(1, bTitle);
+			preparedStatement.setString(2, bContent);
+			preparedStatement.setInt(3, Integer.parseInt(bId));
 			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
@@ -193,7 +193,7 @@ public class BDao {
 	}
 	
 	
-	
+	/*
 	public BDto reply_view(String str) {
 		BDto dto = null;
 		
@@ -268,8 +268,6 @@ public class BDao {
 		
 	}
 	
-	
-	/*
 	private void replyShape( String strGroup, String strStep) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

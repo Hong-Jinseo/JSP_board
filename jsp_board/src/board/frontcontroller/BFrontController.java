@@ -61,6 +61,10 @@ public class BFrontController extends HttpServlet {
 			command = new BContentCommand();
 			command.execute(request, response);
 			viewPage = "content_view.jsp";
+		}else if(com.equals("/toModify.do")) {
+			command = new BContentCommand();
+			command.execute(request, response);
+			viewPage = "modifyContent.jsp";
 		}else if(com.equals("/modify.do")) {
 			command = new BModifyCommand();
 			command.execute(request, response);
@@ -69,6 +73,8 @@ public class BFrontController extends HttpServlet {
 			command = new BDeleteCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
+		}else if(com.contentEquals("/main.do")) {
+			viewPage = "main.jsp";
 		}
 		
 		/*

@@ -83,3 +83,11 @@ function updatePw(){
 		return;
 	}
 }
+
+function changeContentConfirm(){
+	if(document.contentform.bId.value == document.contentform.loginId.value) {
+		alert("작성자만 글 수정이 가능합니다.");
+		return;
+	}
+	document.contentform.submit();
+}

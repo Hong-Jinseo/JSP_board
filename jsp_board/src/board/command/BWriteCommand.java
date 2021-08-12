@@ -14,8 +14,9 @@ public class BWriteCommand implements BCommand {
 		String bName = request.getParameter("bName");
 		String bTitle = request.getParameter("bTitle");
 		String bContent = request.getParameter("bContent");
+		String bUserId = request.getParameter("bUserId");
 		
 		BDao dao = new BDao();
-		dao.write(bName, bTitle, bContent);
+		dao.write(bName, bTitle, bContent, bUserId);
 	}
 }

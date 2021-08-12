@@ -16,7 +16,7 @@
 				<td>이름</td>
 				<td>제목</td>
 				<td>날짜</td>
-				<td>공감</td>
+				<td>조회수</td>
 			</tr>
 			<c:forEach items="${list}" var="dto">
 				<tr>
@@ -34,5 +34,7 @@
 			</tr>
 		</table>
 		
+		<br/><br/>
+		<a href="main.do">메인 화면으로</a>
 	</body>
 </html>
