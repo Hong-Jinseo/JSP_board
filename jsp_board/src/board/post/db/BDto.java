@@ -74,7 +74,7 @@ public class BDto {
 	}
 	
 	public String getbUserId() {
-		return bName;
+		return bUserId;
 	}
 
 	public void setbUserId(String bUserId) {

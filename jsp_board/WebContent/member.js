@@ -85,9 +85,9 @@ function updatePw(){
 }
 
 function changeContentConfirm(){
-	if(document.contentform.bId.value == document.contentform.loginId.value) {
+	if(document.content_form.bUserId.value != document.content_form.loginId.value) {
 		alert("작성자만 글 수정이 가능합니다.");
 		return;
 	}
-	document.contentform.submit();
+	document.content_form.submit();
 }

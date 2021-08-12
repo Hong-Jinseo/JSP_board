@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		
-		<table width="500" cellpadding="1" cellspacing="0" border="1">
+		<table width="500" cellpadding="5" cellspacing="0" border="1">
 			<tr>
 				<td>번호</td>
 				<td>이름</td>

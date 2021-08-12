@@ -5,12 +5,12 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
-	if(session.getAttribute("ValidMem") == null){
+	//if(session.getAttribute("ValidMem") == null){
 %>
-	<jsp:forward page="login.jsp"/>
+	<!-- jsp:forward page="login.jsp"/-->
 <%
-	}
-	String id = (String)session.getAttribute("id");
+	//}
+	//String id = (String)session.getAttribute("id");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
