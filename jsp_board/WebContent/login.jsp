@@ -22,7 +22,8 @@
 			<input type="password" name="pw" size="30"> <br/><br/>
 			
 			<button type="submit">로그인</button> &nbsp;&nbsp;&nbsp;
-			<button type="button" onclick="location.href='join.jsp'">회원가입</button>
+			<button type="button" onclick="location.href='join.jsp'">회원가입</button> <br/><br/>
+			<a href="main.jsp">메인 화면으로</a>
 		</form>
 	</body>
 </html>

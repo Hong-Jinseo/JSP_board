@@ -2,13 +2,12 @@
     pageEncoding="UTF-8"%>
     
 <!-- 로그인 안 한 상태라면 login 페이지로 -->
-<% 	if(session.getAttribute("ValidMem") == null) { %>
-		<jsp:forward page="main.jsp"></jsp:forward>
-<%
+<% 	if(session.getAttribute("ValidMem") == null) { 
+		out.println("<script> alert('로그인 후 열람 가능합니다.'); location.href='list.do'; </script>"); 
 	} 
 	String id = (String)session.getAttribute("id");
 %>
-
+		
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

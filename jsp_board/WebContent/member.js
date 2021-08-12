@@ -91,3 +91,11 @@ function changeContentConfirm(){
 	}
 	document.content_form.submit();
 }
+
+function suggestLogin(){
+	if(document.form.id.value == "null"){
+		alert("로그인 후 사용 가능합니다.");
+		return;
+	}
+	document.form.submit();
+}
