@@ -1,4 +1,4 @@
-package board.comment.db;
+package board.post.db;
 
 import java.sql.Timestamp;
 

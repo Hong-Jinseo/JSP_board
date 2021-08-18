@@ -18,10 +18,10 @@ public class BListCommand implements BCommand {
 		BDao dao = new BDao();
 		ArrayList<BDto> dtos = dao.list();
 		
-		BDao dao3 = new BDao();
-		int count = dao3.countComments(bId);
+		//BDao dao3 = new BDao();
+		//int count = dao3.countComments(bId);
 
 		request.setAttribute("list", dtos);
-		request.setAttribute("count", count);
+		//request.setAttribute("count", count);
 	}
 }

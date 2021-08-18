@@ -10,8 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import board.comment.db.*;
-
  
 public class BDao {
 	DataSource dataSource;
@@ -33,7 +31,7 @@ public class BDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into mvc_board (bId, bName, bTitle, bContent, bUserId, bHit) values (mvc_board_seq.nextval,?,?,?,?,0)";
+			String query = "insert into mvc_board (bId, bName, bTitle, bContent, bUserId, bHit, bDate) values (mvc_board_seq.nextval,?,?,?,?,0, SYSDATE)";
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1,  bName);
@@ -55,13 +53,13 @@ public class BDao {
 	}
 	
 	/* --- 댓글 쓰기 --- */
-	public void writeComment(String cBid, String cUserId, String cNickname, String cContent, Timestamp cDate) {
+	public void writeComment(String cBid, String cUserId, String cNickname, String cContent) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into board_comment (cId, cBid, cUserId, cNickname, cContent, cDate) values (board_comment_seq.nextval,?,?,?,?,null)";
+			String query = "insert into board_comment (cId, cBid, cUserId, cNickname, cContent, cDate) values (board_comment_seq.nextval,?,?,?,?,SYSDATE)";
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1,  Integer.parseInt(cBid));
@@ -299,107 +297,7 @@ public class BDao {
 		}
 	}
 	
-	
-	/*
-	public BDto reply_view(String str) {
-		BDto dto = null;
-		
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		try {
-			
-			connection = dataSource.getConnection();
-			String query = "select * from mvc_board where bId = ?";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, Integer.parseInt(str));
-			resultSet = preparedStatement.executeQuery();
-			
-			if(resultSet.next()) {
-				int bId = resultSet.getInt("bId");
-				String bName = resultSet.getString("bName");
-				String bTitle = resultSet.getString("bTitle");
-				String bContent = resultSet.getString("bContent");
-				Timestamp bDate = resultSet.getTimestamp("bDate");
-				int bHit = resultSet.getInt("bHit");
-				
-				dto = new BDto(bId, bName, bTitle, bContent, bHit, bDate);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		
-		return dto;
-	}
-	
-	
-	
-	public void reply(String bId, String bName, String bTitle, String bContent) {
-		
-		//replyShape(bGroup, bStep);
-		
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		
-		try {
-			connection = dataSource.getConnection();
-			String query = "insert into mvc_board (bId, bName, bTitle, bContent) values (mvc_board_seq.nextval, ?, ?, ?)";
-			preparedStatement = connection.prepareStatement(query);
-			
-			preparedStatement.setString(1, bName);
-			preparedStatement.setString(2, bTitle);
-			preparedStatement.setString(3, bContent);
-			//preparedStatement.setInt(4, Integer.parseInt(bGroup));
-			//preparedStatement.setInt(5, Integer.parseInt(bStep) + 1);
-			//preparedStatement.setInt(6, Integer.parseInt(bIndent) + 1);
-			
-			preparedStatement.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		
-	}
-	
-	private void replyShape( String strGroup, String strStep) {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		
-		try {
-			connection = dataSource.getConnection();
-			String query = "update mvc_board set bStep = bStep + 1 where bGroup = ? and bStep > ?";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, Integer.parseInt(strGroup));
-			preparedStatement.setInt(2, Integer.parseInt(strStep));
-			
-			int rn = preparedStatement.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-	}
-	*/
-	
+
 	/* --- 조회수 --- */
 	private void upHit(String bId) {
 		Connection connection = null;

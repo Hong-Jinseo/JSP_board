@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!-- 이미 로그인 한 상태라면 바로 main으로 -->
-<% if(session.getAttribute("ValidMem") != null) { %>
+<% if(session.getAttribute("ValidMem") == "yes") { %>
 	<jsp:forward page="main.jsp"></jsp:forward>
 <% } %>
 

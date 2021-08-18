@@ -78,22 +78,15 @@ public class BFrontController extends HttpServlet {
 		}else if(com.contentEquals("/enterReply.do")) {
 			command = new BWriteCommentCommand();
 			command.execute(request, response);
-			viewPage = "content_view.do";
-		}
-		
-		/*
-		else if(com.equals("/reply_view.do")) {
-			command = new BReplyViewCommand();
-			command.execute(request, response);
-			viewPage = "reply_view.jsp";
-		}else if(com.equals("/reply.do")) {
-			command = new BReplyCommand();
-			command.execute(request, response);
 			viewPage = "list.do";
 		}
-		*/
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);
+		if(viewPage==null) {
+			response.addHeader("Refresh", "1;url=content_view.jsp");
+		}
+		else{
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
+		}
 	}
 }

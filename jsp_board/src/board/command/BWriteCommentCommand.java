@@ -16,6 +16,6 @@ public class BWriteCommentCommand implements BCommand {
 		String cContent = request.getParameter("cContent");
 		
 		BDao dao = new BDao();
-		dao.writeComment(cBid, bUserId, cNickname, cContent, null);
+		dao.writeComment(cBid, bUserId, cNickname, cContent);
 	}
 }

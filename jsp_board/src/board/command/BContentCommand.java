@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.comment.db.CDto;
 import board.post.db.BDao;
 import board.post.db.BDto;
+import board.post.db.CDto;
+
 
 public class BContentCommand implements BCommand {
 	

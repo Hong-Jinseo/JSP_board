@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <% 	if(session.getAttribute("ValidMem") == null) { 
 		out.println("<script> alert('로그인 후 열람 가능합니다.'); location.href='list.do'; </script>"); 
 	} 
@@ -57,10 +58,11 @@
 				<td colspan="9"> 댓글 (${count})</td>
 			</tr>
 			<c:forEach items="${comments}" var="cDto">
+				<fmt:formatDate var="formatRegDate" value="${cDto.cDate}" pattern="MM.dd HH:MM"/>
 				<tr>
 					<td> ${cDto.cNickname} </td>
 					<td> ${cDto.cContent} </td>
-					<td> ${cDto.cDate} </td>
+					<td> ${formatRegDate} </td>
 				</tr>
 			</c:forEach>
 		</table>
