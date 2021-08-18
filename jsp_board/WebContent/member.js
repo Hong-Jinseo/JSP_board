@@ -99,3 +99,19 @@ function suggestLogin(){
 	}
 	document.form.submit();
 }
+
+function deleteContentConfirm(){
+	if(document.content_form.bUserId.value != document.content_form.loginId.value) {
+		alert("작성자만 글 삭제가 가능합니다.");
+		return;
+	}
+	location.herf = "delete.do?bId=${content_view.bId}"
+}
+
+function checkReply(){
+	if(document.enterReply_form.cContent.value.length == 0){
+		alert("댓글을 입력해주세요.");
+		return;
+	}
+	document.enterReply_form.submit();
+}

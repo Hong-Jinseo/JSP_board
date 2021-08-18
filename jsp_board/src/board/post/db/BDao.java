@@ -10,7 +10,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import board.comment.db.*;
 
+ 
 public class BDao {
 	DataSource dataSource;
 	
@@ -23,7 +25,7 @@ public class BDao {
 		}
 	}
 	
-	
+	/* --- 게시글 쓰기 --- */
 	public void write(String bName, String bTitle, String bContent, String bUserId) {
 		
 		Connection connection = null;
@@ -52,8 +54,36 @@ public class BDao {
 		}
 	}
 	
+	/* --- 댓글 쓰기 --- */
+	public void writeComment(String cBid, String cUserId, String cNickname, String cContent, Timestamp cDate) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into board_comment (cId, cBid, cUserId, cNickname, cContent, cDate) values (board_comment_seq.nextval,?,?,?,?,null)";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1,  Integer.parseInt(cBid));
+			preparedStatement.setString(2,  cUserId);
+			preparedStatement.setString(3,  cNickname);
+			preparedStatement.setString(4,  cContent);
+			
+			preparedStatement.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+	}
 	
 	
+	/* --- 글 목록 --- */
 	public ArrayList<BDto> list(){
 		
 		ArrayList<BDto> dtos = new ArrayList<BDto>();
@@ -96,7 +126,7 @@ public class BDao {
 	}
 	
 	
-	
+	/* --- 게시글 보기 --- */
 	public BDto contentView(String strID) {
 		upHit(strID);
 		
@@ -139,7 +169,53 @@ public class BDao {
 		return dto;
 	}
 	
+	/* --- 댓글 보기 --- */
+	public ArrayList<CDto> getAllComment(String cbid){
+	//public ArrayList<CDto> getAllComment(){
+		
+		ArrayList<CDto> dtos = new ArrayList<CDto>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query 
+					= "select cId, cBid, cUserId, cNickname, cContent, cDate "
+					+ "from board_comment order by cId"
+					+ "where cBid=?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(cbid));
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int cId = resultSet.getInt("cId");
+				int cBid = resultSet.getInt("cBid");
+				String cUserId = resultSet.getString("cUserId");
+				String cNickname = resultSet.getString("cNickname");
+				String cContent = resultSet.getString("cContent");
+				Timestamp cDate = resultSet.getTimestamp("cDate");
+				
+				CDto dto = new CDto(cId, cBid, cUserId, cNickname, cContent, cDate);
+				dtos.add(dto);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+
 	
+	/* --- 게시글 수정 --- */
 	public void modify(String bId, String bTitle, String bContent) {
 		
 		Connection connection = null;
@@ -168,7 +244,7 @@ public class BDao {
 	}
 	
 	
-	
+	/* --- 게시글 삭제 --- */
 	public void delete(String bId) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -293,7 +369,8 @@ public class BDao {
 	}
 	*/
 	
-	private void upHit( String bId) {
+	/* --- 조회수 --- */
+	private void upHit(String bId) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		

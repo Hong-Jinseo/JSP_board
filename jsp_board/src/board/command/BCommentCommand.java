@@ -7,22 +7,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.comment.db.CDto;
 import board.post.db.BDao;
-import board.post.db.BDto;
 
-public class BContentCommand implements BCommand {
+public class BCommentCommand implements BCommand {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String bId = request.getParameter("bId");
+		//String bId = request.getParameter("bId");
 		BDao dao = new BDao();
-		BDto dto = dao.contentView(bId);
+		//ArrayList<CDto> dtos = dao.getAllComment();
 		
-		BDao dao2 = new BDao();
-		ArrayList<CDto> dtos = dao2.getAllComment("bId");
-		
-		request.setAttribute("content_view", dto);
-		request.setAttribute("comments", dtos);
+		//request.setAttribute("comment_view", dtos);
 	}
 }
  
