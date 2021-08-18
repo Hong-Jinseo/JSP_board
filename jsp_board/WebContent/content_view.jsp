@@ -54,20 +54,15 @@
 	<form name="reply_form" action="" method="post">
 		<table width="500" cellpadding="5" cellspacing="0" border="1">
 			<tr>
-				<td colspan="9"> 댓글 (n)</td>
+				<td colspan="9"> 댓글 (${count})</td>
 			</tr>
 			<c:forEach items="${comments}" var="cDto">
 				<tr>
-					<td>${cDto.cNickname}</td>
-					<td>${cDto.cContent}</td>
-					<td>${cDto.cDate}</td>
+					<td> ${cDto.cNickname} </td>
+					<td> ${cDto.cContent} </td>
+					<td> ${cDto.cDate} </td>
 				</tr>
 			</c:forEach>
-			<tr>
-				<td> ${comments.cNickname} </td>
-				<td> ${comments.cContent} </td>
-				<td> ${comments.cDate} </td>
-			</tr>
 		</table>
 	</form>
 	

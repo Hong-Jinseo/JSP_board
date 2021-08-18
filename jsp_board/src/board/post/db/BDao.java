@@ -170,8 +170,7 @@ public class BDao {
 	}
 	
 	/* --- 댓글 보기 --- */
-	public ArrayList<CDto> getAllComment(String cbid){
-	//public ArrayList<CDto> getAllComment(){
+	public ArrayList<CDto> comments(String cbid){
 		
 		ArrayList<CDto> dtos = new ArrayList<CDto>();
 		Connection connection = null;
@@ -182,9 +181,7 @@ public class BDao {
 			connection = dataSource.getConnection();
 			
 			String query 
-					= "select cId, cBid, cUserId, cNickname, cContent, cDate "
-					+ "from board_comment order by cId"
-					+ "where cBid=?";
+					= "select cId, cBid, cUserId, cNickname, cContent, cDate from BOARD_COMMENT where cBid=? order by cId";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(cbid));
 			resultSet = preparedStatement.executeQuery();
@@ -212,6 +209,40 @@ public class BDao {
 			}
 		}
 		return dtos;
+	}
+	
+	
+	/* --- 댓글 개수 --- */
+	public int countComments(String cbid){
+		
+		int count = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "select count(*) from BOARD_COMMENT where cBid=?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(cbid));
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		return count;
 	}
 
 	

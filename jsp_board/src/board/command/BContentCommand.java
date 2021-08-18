@@ -15,14 +15,19 @@ public class BContentCommand implements BCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String bId = request.getParameter("bId");
+		
 		BDao dao = new BDao();
 		BDto dto = dao.contentView(bId);
 		
 		BDao dao2 = new BDao();
-		ArrayList<CDto> dtos = dao2.getAllComment("bId");
+		ArrayList<CDto> dtos = dao2.comments(bId);
 		
-		request.setAttribute("content_view", dto);
+		BDao dao3 = new BDao();
+		int count = dao3.countComments(bId);
+		
 		request.setAttribute("comments", dtos);
+		request.setAttribute("content_view", dto);
+		request.setAttribute("count", count);
 	}
 }
  
